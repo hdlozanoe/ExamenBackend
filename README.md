@@ -1,30 +1,37 @@
-Franquicias API – Examen Backend
+# Franquicias API – Examen Backend
 
-Descripción
+## Descripción
 
 Se requiere construir un API para manejar una lista de franquicias, Una franquicia se compone por un nombre y una lista de 
 sucursales y, a su vez, una sucursal está compuesta por un nombre y un listado de productos ofertados en la sucursal. Un 
 producto se compone de un nombre y una cantidad de Stock.  
 
-Como desplegar la aplicación 
+## Como desplegar la aplicación 
 
-Se requiere desplegar una base de datos MongoBD para almacenar la colección, es importante tener en cuenta que es necesario tener la conexión abierta para la ip desde la clual se va a realizar la prueba, el cambio se debe realizar en el archivo 'application.properties' de la siguiente forma:
+Se requiere desplegar una base de datos MongoBD para almacenar la colección, es importante tener en cuenta que es necesario tener la conexión abierta para la ip desde la cual se va a realizar la prueba. Despues de esto se debe realizar un cambio en el archivo 'application.properties':
 
+```
 server.port = 8989
 
-# MongoDB Configuration
-spring.data.mongodb.uri=<uri de la mongodb>
-spring.data.mongodb.database=<nombre de la base de datos>
+#MongoDB Configuration
 
-Se debe remplazar los datos especificados en <> por ejemplo:
+spring.data.mongodb.uri = "uri de la mongodb"
 
+spring.data.mongodb.database = "nombre de la base de datos"
+```
+
+Se debe remplazar los datos especificados en "" de esta forma:
+
+```
 server.port = 8989
 
-# MongoDB Configuration
+#MongoDB Configuration
 spring.data.mongodb.uri=mongodb+srv://hdlozanoe:VS4YfGEjLt4AqLLo@cluster0.q6qfjve.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 spring.data.mongodb.database=Test
+```
 
-Ademas de esto es importante tener en cuenta que el servicio se va a exponer en el puerto 8989 por lo tanto debe estar libre o cambiar el puerto
+Ademas de esto es importante tener en cuenta que el servicio se va a exponer en el puerto 8989 por lo tanto debe estar libre o cambiar el puerto.
+Se puede ejecutar por el docker o directamente con el main del proyecto. Es importante aclarar que se esta haciendo uso de JAVA 17.
 
 Tecnologías Utilizadas
 
@@ -34,9 +41,9 @@ Tecnologías Utilizadas
 - **MongoDB reactivo**
 - **Docker**
 
-Ejemplo de la estructura del postman
+## Ejemplo de la estructura del postman
 
-
+```json
 {
     "nombre": "Gabriel G",
     "sucursales": [
@@ -51,14 +58,16 @@ Ejemplo de la estructura del postman
         }
     ]
 }
+```
+Tener en cuenta que:
+
+ - La franquicia contiene sucursales las cuales tiene productos.
+ - Se maneja solo una coleccion ya que facilita no solo la estructura de los datos, sino que adicionalmente simplifica las consultas que se van a realizar
+
+Es necesario poblar la colección para realizar las pruebas, para esto se puede hacer apartir de la creacion de la franquicia con la estructura que se mostro antes.
 
 
-La franquicia contiene sucursales las cuales tiene productos.
-
-Es necesario poblar la collección para realizar las pruebas, para esto se puede hacer apartir de la creacion de la franquicia con la estructura que se mostro antes.
-
-
-Endpoints
+## Endpoints
 
 | Método | Endpoint                  										| Descripción                   	|
 |--------|------------------------------------------------------------------------------------------------------|---------------------------------------|
